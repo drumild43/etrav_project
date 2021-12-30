@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    
+    <title>HotelSPOT</title>
+    <style>
+      body{
+          background-image: url("images/bg.jpg");
+          background-color: rgb(255, 255, 255);
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-attachment: fixed
+  
+      }
+  </style>
+  </head>
+  <body>
+    <!--Header-->
+    <header id="home" class="header">
+      <nav class="navigation">
+        <div class="navigation container">
+          <div class="logo">
+            HotelSPOT
+          </div>
+          <div class="menu">
+            <ul class="navigation-list">
+              <li class="navigation-item">
+                <a href="homepage.html" class="Navigation-link" >Home</a>
+              </li>
+              <li class="navigation-item">
+                <a href="hotels.html" class="Navigation-link" >Explore Hotels</a>
+              </li>
+              <li class="navigation-item">
+                <a href="#contact" class="Navigation-link" >About Us</a>
+              </li>
+              <li class="navigation-item">
+                <a href="#contact" class="Navigation-link" >Contact</a>
+              </li>
+              <li class="navigation-item">
+                <a href="accounts.html" class="Navigation-link" >Hello #user_name</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </br>
+  </br>
+  </br>
+        <div class="search-container">
+            
+          <div class="hotel_content">
+  
+            <div class="info"></br>
+              <h2>Book Hotels </h2>
+              <h4>You Dream Destination Awaits....</h4></br>
+            </div>
+          </br>
+        </br>
+            <div class="booking_info">
+      
+              
+      
+              <div class="booking_details">
+      
+                <div class="item">
+                  <input type="text" placeholder=" Enter City" class="search_bar"></i>
+                 
+                </div>
+                <div class="item">
+                    <input type="text" placeholder=" Enter Date of booking" class="search_bar"></i>
+                   
+                </div>
+      
+                <div class="item">
+                    <input type="text" placeholder=" Enter Number of Days Stay" class="search_bar"></i>
+                   
+                </div>
+      
+                <div class="item">
+                    <input type="Number" placeholder="Number of Rooms" class="search_bar"></i>
+                </div>
+      
+      
+                <div class="item">
+                  <div class="cta active">Search</div>
+                </div>
+      
+              </div>
+      
+            </div>
+      
+          </div>
+     </div>
+    </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+      
+    </header>
+    <section class="section all-products" id="products">
+      <div class="top-container">
+          <h1><b>All Hotels</b></h1>
+          <div class="filter">
+            
+          <form action = "{% url 'store:products' %}" method = "get">
+            
+						<select  id="sort" name="sort" >
+							<option value="Price-sort" selected disabled> Sort by Price</option>
+              
+							<option value="sort_H_to_L">High to Low</option>
+              <option value="sort_L_to_H">Low to High</option></select>
+              <select id="City" name="city">
+              <option value="Select as per City"selected disabled> Sort by City</option>
+              <option value="Ahmedabad"> Ahmedabad</option>
+              <option value="Bengluru">Bengluru</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Surat">Surat</option></select>
+						<button><input class= "but-fil" type="submit" value="Submit"></button>
+					</form>
+        </div>
+          
+          
+      </div>
+      <div class="categories">
+        <h2 id="Ahmedabad"><b>Ahmedabad</b></h2>
+      <div class="prods-center container">
+        
+          <div class="prods">
+              <div class="prods-hd">
+                  <img src="./images/Ahmedabad/bloomsuites-ahmedabad.jpg" alt="">
+                  <ul class="icons">
+                   
+                      <span><i class="bx bx-heart"></i></span></a>
+                      
+                  </ul>
+              </div>
+              <div class="prods-footer">
+                  <a href="hotel-details.html">
+                      <h3>The Bloomsuites</h3>
+                  </a>
+                  <div class="rating">
+                      <i class="bx bxs-star fa-xs"></i>
+                      <i class="bx bxs-star fa-xs"></i>
+                      <i class="bx bxs-star fa-xs"></i>
+                      <i class="bx bx-star fa-xs"></i>
+                      <i class="bx bx-star fa-xs"></i>
+                  </div>
+                  0<h3 class="price">₹5000</h4>
+              </div>
+          </div> 
+          <div class="prods">
+            <div class="prods-hd">
+                <img src="./images/Ahmedabad/hotel-elysian-residency.jpg" alt="">
+                <ul class="icons">
+                  
+                    <span><i class="bx bx-heart"></i></span></a>
+                    
+                </ul>
+            </div>
+            <div class="prods-footer">
+                <a href="hotel-details.html">
+                    <h3>Elsien Residency</h3>
+                </a>
+                <div class="rating">
+                    <i class="bx bxs-star fa-xs"></i>
+                    <i class="bx bxs-star fa-xs"></i>
+                    <i class="bx bxs-star fa-xs"></i>
+                    <i class="bx bx-star fa-xs"></i>
+                    <i class="bx bx-star fa-xs"></i>
+                </div>
+                <h3 class="price">₹5680</h4>
+            </div>
+          </div>
+          <div class="prods">
+            <div class="prods-hd">
+              <img src="./images/Ahmedabad/ideally-located-on-prahlad.jpg" alt="">
+              <ul class="icons">
+                
+                  <span><i class="bx bx-heart"></i></span></a>
+                 
+              </ul>
+          </div>
+          <div class="prods-footer">
+              <a href="hotel-details.html">
+                  <h3>The Prahlads</h3>
+              </a>
+              <div class="rating">
+                  <i class="bx bxs-star fa-xs"></i>
+                  <i class="bx bxs-star fa-xs"></i>
+                  <i class="bx bxs-star fa-xs"></i>
+                  <i class="bx bx-star fa-xs"></i>
+                  <i class="bx bx-star fa-xs"></i>
+              </div>
+              <h3 class="price">₹6500</h4>
+          </div>
+      </div>
+      <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Ahmedabad/lemon-tree-premier-the.jpg"alt="">
+            <ul class="icons">
+              
+                <span><i class="bx bx-heart"></i></span>
+                
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Lemon Tree Premier</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹6800</h4>
+        </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Ahmedabad/lemontree.jpg" alt="">
+          <ul class="icons">
+            
+              <span><i class="bx bx-heart"></i></span>
+               
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Lemon Tree</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹5650</h4>
+      </div>
+  </div>
+  <div class="prods">
+    <div class="prods-hd">
+        <img src="./images/Ahmedabad/Lotus-Park.jpg"alt="">
+        <ul class="icons">
+          
+            <span><i class="bx bx-heart"></i></span>
+             
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>The Lotus Park</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">9840</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Ahmedabad/narayani-heights.jpg" alt="">
+      <ul class="icons">
+       
+          <span><i class="bx bx-heart"></i></span>
+         
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>The Narayani Heights</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹10000</h4>
+  </div>
+</div> 
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Ahmedabad/Rivera-Sarovar-Portico.jpg" alt="">
+      <ul class="icons">
+        
+          <span><i class="bx bx-heart"></i></span>
+          
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>Rivera Sarovar Portico</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹9500</h4>
+  </div>
+</div>
+  </div>
+</div>
+<div class="categories">
+  <h2 id="Bengaluru"><b>Bengaluru</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Bengaluru/angsana-oasis-spa-and-resort.jpg" alt="">
+            <ul class="icons">
+              
+                <span><i class="bx bx-heart"></i></span>
+                
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Angsana Oasis Spa and Resort</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹6500</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Bengaluru/davanam-sarovar-portico.jpg" alt="">
+          <ul class="icons">
+            
+              <span><i class="bx bx-heart"></i></span>
+              
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Davanam Sarovar Portico</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹3600</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Bengaluru/Double-tree-suites.jpg" alt="">
+        <ul class="icons">
+          
+            <span><i class="bx bx-heart"></i></span>
+            
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>Double Tree Suites</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹9870</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Bengaluru/itc-windsor-bengaluru.jpg" alt="">
+      <ul class="icons">
+        
+          <span><i class="bx bx-heart"></i></span>
+          
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>ITC Windsor</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹6500</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Bengaluru/lemon-tree-hotel-whitefield.jpg" alt="">
+    <ul class="icons">
+      
+        <span><i class="bx bx-heart"></i></span>
+        
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>Lemon Tree Whitefield</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹6400</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Bengaluru/lemon-tree.jpg" alt="">
+  <ul class="icons">
+    
+      <span><i class="bx bx-heart"></i></span>
+      
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>Lemon Tree</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹8600</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Bengaluru/Liverpool.jpg" alt="">
+<ul class="icons">
+  
+    <span><i class="bx bx-heart"></i></span>
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>The Liverpool</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹9800</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Bengaluru/Radisson-City-Center.jpg" alt="">
+<ul class="icons">
+  
+    <span><i class="bx bx-heart"></i></span>
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Radisson City Center</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹7950</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="categories">
+  <h2 id="Chennai"><b>Chennai</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Chennai/accord-chrome.jpg" alt="">
+            <ul class="icons">
+               
+                <span><i class="bx bx-heart"></i></span>  
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Accord Chrome</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹6400</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Chennai/Feathers A Radha Hotel.jpg" alt="">
+          <ul class="icons">
+             
+              <span><i class="bx bx-heart"></i></span>
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Feathers</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹5600</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Chennai/Hilton.jpg" alt="">
+        <ul class="icons">
+           
+            <span><i class="bx bx-heart"></i></span><
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>HILTON</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹9864</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Chennai/Ibis-Chennai-Sipcot.jpg" alt="">
+      <ul class="icons">
+         
+          <span><i class="bx bx-heart"></i></span>  
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>Ibis Sipcot</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹8560</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Chennai/Lemon-tree-chennai.jpg" alt="">
+    <ul class="icons">
+       
+        <span><i class="bx bx-heart"></i></span>
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>Lemon Tree</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹8965</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Chennai/lemon-tree-hotel-shimona.jpg" alt="">
+  <ul class="icons">
+     
+      <span><i class="bx bx-heart"></i></span>  
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>Lemon Tree Simona</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹5845</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Chennai/Taj-Coromandal.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Taj Coromondal</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹9856</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Chennai/the-park-chennai.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>The Park</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹9860</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="categories">
+  <h2 id="Delhi"><b>Delhi</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Delhi/eros-hotel.jpg" alt="">
+            <ul class="icons">
+               
+                <span><i class="bx bx-heart"></i></span>  
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Eros</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹8451</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Delhi/Ibis-NewDelhi-Aerocity.jpg" alt="">
+          <ul class="icons">
+             
+              <span><i class="bx bx-heart"></i></span>
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Ibis Aerocity</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹7894</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Delhi/Lemon-Tree-Premier.jpg" alt="">
+        <ul class="icons">
+           
+            <span><i class="bx bx-heart"></i></span>
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>Lemon Tree Premier</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹7984</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Delhi/Novotel.jpg" alt="">
+      <ul class="icons">
+         
+          <span><i class="bx bx-heart"></i></span>  
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>The Novotel</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹7852</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Delhi/Pullman-.jpg" alt="">
+    <ul class="icons">
+       
+        <span><i class="bx bx-heart"></i></span>
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>Pullman</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹5235</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Delhi/Radisson-Blu.jpg" alt="">
+  <ul class="icons">
+     
+      <span><i class="bx bx-heart"></i></span>
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>Radisson Blu</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹6545</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Delhi/Radisson-hitec.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Radisson Hitec </h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹5540</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Delhi/red-fox-hotel-delhi-airport.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Red Fox </h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹4850</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="categories">
+  <h2 id="Hyderabad"><b>Hyderabad</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Hyderabd/ellaa-hotels.jpg" alt="">
+            <ul class="icons">
+               
+                <span><i class="bx bx-heart"></i></span>  
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Ellla</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹5123</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Hyderabd/exterior.jpg" alt="">
+          <ul class="icons">
+             
+              <span><i class="bx bx-heart"></i></span>  
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Exterior</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹4856</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Hyderabd/Golkonda.jpg" alt="">
+        <ul class="icons">
+           
+            <span><i class="bx bx-heart"></i></span>  
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>Golkonda</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹6845</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Hyderabd/Holiday-inn-express.jpg" alt="">
+      <ul class="icons">
+         
+          <span><i class="bx bx-heart"></i></span>  
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>Holiday Inn Express</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹7954</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Hyderabd/Hyatt-Place.jpg" alt="">
+    <ul class="icons">
+       
+        <span><i class="bx bx-heart"></i></span>  
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>Hyatt Place</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹4530</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Hyderabd/mercure.jpg" alt="">
+  <ul class="icons">
+     
+      <span><i class="bx bx-heart"></i></span>  
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>Mercure</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹5430</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Hyderabd/mrugavani-resort-spa.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Mrugavani Resort & Spa</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹6320</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Hyderabd/Novotel.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Novotel</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹5465</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="categories">
+  <h2 id="Jaipur"><b>Jaipur</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Jaipur/alsisar-haveli.jpg" alt="">
+            <ul class="icons">
+               
+                <span><i class="bx bx-heart"></i></span>  
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Alsisar Haveli</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹6540</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Jaipur/Crown-Plaza-.jpg" alt="">
+          <ul class="icons">
+             
+              <span><i class="bx bx-heart"></i></span>  
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Crown Plaza</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹2120</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Jaipur/hotel-park-regent.jpg" alt="">
+        <ul class="icons">
+           
+            <span><i class="bx bx-heart"></i></span>  
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>Park Regent</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹6566</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images//Jaipur/Laxmi-Palace.jpg" alt="">
+      <ul class="icons">
+         
+          <span><i class="bx bx-heart"></i></span>  
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>Laxmi Palace</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹9650</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Jaipur/pearl-palace-heritage.jpg" alt="">
+    <ul class="icons">
+       
+        <span><i class="bx bx-heart"></i></span>  
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>Pearl Palace</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹4503</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Jaipur/rajasthan-palace-hotel.jpg" alt="">
+  <ul class="icons">
+     
+      <span><i class="bx bx-heart"></i></span>  
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>Rajasthan Palace</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹5651</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Jaipur/royal-heritage-haveli.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Royal Heritage Haveli</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹9854</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Jaipur/Shapura-House.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Shapura House</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹4450</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="categories">
+  <h2 id="Kolkata"><b>Kolkata</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Kolkata/Calcutta-Bungalow.jpg" alt="">
+            <ul class="icons">
+               
+                <span><i class="bx bx-heart"></i></span>  
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Calcutta Banglow</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹8400</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Kolkata/ethnotel.jpg" alt="">
+          <ul class="icons">
+             
+              <span><i class="bx bx-heart"></i></span>  
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Ethnotel</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹8400</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Kolkata/Golden-Tulip-Salt-City.jpg" alt="">
+        <ul class="icons">
+           
+            <span><i class="bx bx-heart"></i></span>  
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>Golden Tulip Salt City</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹5400</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Kolkata/Holiday-Inn-Express.jpg" alt="">
+      <ul class="icons">
+         
+          <span><i class="bx bx-heart"></i></span>  
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>Holiday Inn Express</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹5400</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Kolkata/Ibis.jpg" alt="">
+    <ul class="icons">
+       
+        <span><i class="bx bx-heart"></i></span>  
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>Ibis</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹6000</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Kolkata/ITC-ROyal-Bengal.jpg" alt="">
+  <ul class="icons">
+     
+      <span><i class="bx bx-heart"></i></span>  
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>ITC Royal Bengal</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹3600</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Kolkata/polo-floatel-kolkata.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Polo Floatel</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹5200</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Kolkata/the-avenue-hotel-ballygunge.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Asian Future-01</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹5850</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="categories">
+  <h2 id="Mumbai"><b>Mumbai</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Mumbai/Hotei-Sheetal.jpg" alt="">
+            <ul class="icons">
+               
+                <span><i class="bx bx-heart"></i></span>  
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Hotel Sheetal</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹5400</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Mumbai/Novotel-Juhu.jpg" alt="">
+          <ul class="icons">
+             
+              <span><i class="bx bx-heart"></i></span>  
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Novotel Juhu</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹5450</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Mumbai/Radisson-Blu.jpg" alt="">
+        <ul class="icons">
+           
+            <span><i class="bx bx-heart"></i></span>  
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>Radisson Blu</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹6500</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Mumbai/The-Byke-Delotel.jpg" alt="">
+      <ul class="icons">
+         
+          <span><i class="bx bx-heart"></i></span>  
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>The Byke Delotel</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹4450</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Mumbai/the-empresa-hotel.jpg" alt="">
+    <ul class="icons">
+       
+        <span><i class="bx bx-heart"></i></span>  
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>The Empresa Hotel</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹5485</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Mumbai/the-fern-goregaon.jpg" alt="">
+  <ul class="icons">
+     
+      <span><i class="bx bx-heart"></i></span>  
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>The Fern, Goregaon</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹5742</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Mumbai/The-Trident.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>The Trident</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹8450</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Mumbai/the-waterstones-hotel.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>The Waterstone</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹7450</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="categories">
+  <h2 id="Pune"><b>Pune</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Pune/BLue-Diamon.jpg" alt="">
+            <ul class="icons">
+               
+                <span><i class="bx bx-heart"></i></span>
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Blue Diamond</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹8400</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Pune/fort-jadhavgadh-pune.jpg" alt="">
+          <ul class="icons">
+             
+              <span><i class="bx bx-heart"></i></span>  
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Fort JadhavGarh</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹8451</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Pune/Marriott-Suites.jpg" alt="">
+        <ul class="icons">
+           
+            <span><i class="bx bx-heart"></i></span>  
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>Marriotte Suites</h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹5600</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Pune/Oxforf-Golf-Resort.jpg" alt="">
+      <ul class="icons">
+         
+          <span><i class="bx bx-heart"></i></span>  
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>Oxford Golf Resort</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹5400</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Pune/Palett-Sunny-world.jpg" alt="">
+    <ul class="icons">
+       
+        <span><i class="bx bx-heart"></i></span>  
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>Palette Sunny World</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹4550</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Pune/Sheraton-Grand.jpg" alt="">
+  <ul class="icons">
+     
+      <span><i class="bx bx-heart"></i></span>  
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>Sheraton Grand</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹8550</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Pune/the-corinthians-boutique.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>The Corinthians Boutique</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹8500</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Pune/the-ritz-carlton-pune.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>The Ritz Carlton</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹4550</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="categories">
+  <h2 id="Surat"><b>Surat</b></h2>
+<div class="prods-center container">
+  
+    <div class="prods">
+        <div class="prods-hd">
+            <img src="./images/Surat/Budget-inn.jpg" alt="">
+            <ul class="icons">
+               
+                <span><i class="bx bx-heart"></i></span>  
+            </ul>
+        </div>
+        <div class="prods-footer">
+            <a href="hotel-details.html">
+                <h3>Budget Inn</h3>
+            </a>
+            <div class="rating">
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bxs-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+                <i class="bx bx-star fa-xs"></i>
+            </div>
+            <h3 class="price">₹6500</h4>
+        </div>
+    </div> 
+    <div class="prods">
+      <div class="prods-hd">
+          <img src="./images/Surat/hotel-king-s-heritage.jpg" alt="">
+          <ul class="icons">
+             
+              <span><i class="bx bx-heart"></i></span>  
+          </ul>
+      </div>
+      <div class="prods-footer">
+          <a href="hotel-details.html">
+              <h3>Hotel Kings' Heritage</h3>
+          </a>
+          <div class="rating">
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bxs-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+              <i class="bx bx-star fa-xs"></i>
+          </div>
+          <h3 class="price">₹5540</h4>
+      </div>
+    </div>
+    <div class="prods">
+      <div class="prods-hd">
+        <img src="./images/Surat/hotel-sifat-international.jpg" alt="">
+        <ul class="icons">
+           
+            <span><i class="bx bx-heart"></i></span>  
+        </ul>
+    </div>
+    <div class="prods-footer">
+        <a href="hotel-details.html">
+            <h3>Sifat International </h3>
+        </a>
+        <div class="rating">
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bxs-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+            <i class="bx bx-star fa-xs"></i>
+        </div>
+        <h3 class="price">₹6500</h4>
+    </div>
+</div>
+<div class="prods">
+  <div class="prods-hd">
+      <img src="./images/Surat/Lords-Plza.jpg" alt="">
+      <ul class="icons">
+         
+          <span><i class="bx bx-heart"></i></span>
+      </ul>
+  </div>
+  <div class="prods-footer">
+      <a href="hotel-details.html">
+          <h3>Lords Plaza</h3>
+      </a>
+      <div class="rating">
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bxs-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+          <i class="bx bx-star fa-xs"></i>
+      </div>
+      <h3 class="price">₹5200</h4>
+  </div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+    <img src="./images/Surat/Midtown.jpg" alt="">
+    <ul class="icons">
+       
+        <span><i class="bx bx-heart"></i></span>  
+    </ul>
+</div>
+<div class="prods-footer">
+    <a href="hotel-details.html">
+        <h3>Midtown</h3>
+    </a>
+    <div class="rating">
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bxs-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+        <i class="bx bx-star fa-xs"></i>
+    </div>
+    <h3 class="price">₹5520</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+  <img src="./images/Surat/Orange-International.jpg" alt="">
+  <ul class="icons">
+     
+      <span><i class="bx bx-heart"></i></span>  
+  </ul>
+</div>
+<div class="prods-footer">
+  <a href="hotel-details.html">
+      <h3>Orange International</h3>
+  </a>
+  <div class="rating">
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bxs-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+      <i class="bx bx-star fa-xs"></i>
+  </div>
+  <h3 class="price">₹5120</h4>
+</div>
+</div>
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Surat/Rajhans-Belliza.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>  
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Rajhans Belliza</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹5400</h4>
+</div>
+</div> 
+<div class="prods">
+<div class="prods-hd">
+<img src="./images/Surat/royal-rituals.jpg" alt="">
+<ul class="icons">
+   
+    <span><i class="bx bx-heart"></i></span>
+</ul>
+</div>
+<div class="prods-footer">
+<a href="hotel-details.html">
+    <h3>Royal Rituals</h3>
+</a>
+<div class="rating">
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bxs-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+    <i class="bx bx-star fa-xs"></i>
+</div>
+<h3 class="price">₹5520</h4>
+</div>
+</div>
+</div>
+</div>
+  </section>  
+  
+
+  <section id="contact" class="footer">
+    <div class="foot-container">
+      <div class="footer-items">
+        <h3>
+          EXTRAS
+        </h3>
+        <a href="hotels.html" >Brands</a>
+
+        <a href="index.html">Site Map</a>
+      </div>
+      <div class="footer-items">
+        <h3>Info Center</h3>
+        <a href="#">About Us</a>
+        <a href="#" >Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      
+      </div>
+      <div class="footer-items">
+        <h3>
+          ACCOUNTS
+        </h3>
+        <a href="account.html">Update Personal Details</a>
+        
+        
+        <a href="index.html">Log out</a>
+      </div>
+      <div class="footer-items">
+        <h3>CONTACT US</h3>
+        <div>
+          <i class="fas fa-map-marker-alt"></i>
+          139, Kamala Nagar, Charbagh, New Delhi, India - 236545
+        </div>
+        <div>
+          <i class="far fa-envelope"></i>
+          info@hotelspot.com
+        </div>
+        <div>
+          <i class="fas fa-phone"></i>
+          +91 75557 78964
+        </div>
+        <div></div>
+          <i class="far fa-paper-plane"></i>
+          New Delhi, India
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script src="./js/index.js"></script> 
+  </body>
+</html>
