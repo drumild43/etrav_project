@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.db.models import Avg, Count
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
@@ -46,6 +48,7 @@ class Hotel(models.Model):
     city = models.ForeignKey('City', on_delete=models.PROTECT)
     standard_room_price = models.PositiveIntegerField()
     suite_price = models.PositiveIntegerField()
+    stars = models.PositiveIntegerField()
 
     def __str__(self):
         return self.name
@@ -88,6 +91,14 @@ class Booking(models.Model):
     adult_count = models.PositiveIntegerField()
     child_count = models.PositiveIntegerField()
 
+    STANDARD = 'std'
+    SUITE = 'sui'
+    ROOM_CHOICES = [
+        (STANDARD, 'Standard King Room'),
+        (SUITE, 'Deluxe Suite Room')
+    ]
+    room_type = models.CharField(max_length=3, choices=ROOM_CHOICES)
+
     CONFIRMED = 'C'
     ACTIVE = 'A'
     COMPLETE = 'K'
@@ -102,19 +113,24 @@ class Booking(models.Model):
 
     def get_updated_status(self):
         # if booking not cancelled or complete, update status
-        if self.status != 'X' and self.status != 'K':
+        if self.status != self.CANCELLED and self.status != self.COMPLETE:
             if timezone.now() < self.checkin_time:
-                self.status = 'C'
+                self.status = self.CONFIRMED
 
             elif timezone.now() < self.checkout_time:
-                self.status = 'A'
+                self.status = self.ACTIVE
 
             else:
-                self.status = 'K'
+                self.status = self.COMPLETE
 
             self.save()
 
         return self.get_status_display()
+
+    def is_cancellable(self):
+        # allow cancellation till 24 hours before check-in
+        return self.status != self.CANCELLED and \
+            timezone.now() < self.checkin_time - datetime.timedelta(hours=24)
 
 class Review(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)

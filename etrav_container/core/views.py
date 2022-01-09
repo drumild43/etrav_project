@@ -41,7 +41,7 @@ def signup(request, hotel_id=None):
 
             if hotel_id:
                 return HttpResponseRedirect(
-                    reverse('store:hotel-details', args=(new_user.id, hotel_id))
+                    reverse('core:hotel-details', args=(new_user.id, hotel_id))
                 )
             else:
                 return HttpResponseRedirect(reverse('core:homepage', args=(new_user.id,)))
@@ -97,3 +97,7 @@ def logout(request, user_id):
         curr_user.save()
 
     return HttpResponseRedirect(reverse('core:anon_homepage'))
+
+def account(request, user_id):
+    curr_user = EtravUser.objects.get(pk=user_id)
+    return render(request, 'core/account.html', context={'curr_user': curr_user})

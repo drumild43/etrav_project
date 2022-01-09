@@ -4,9 +4,9 @@
   <center>
     <div class="update">      
       <h2>Update Personal Info</h2>
-      <h3>Name: ssohdifhosf sofh sohfs</h3>
-      <h3>Email: sdfsohfofs@soshifdfohsf.com</h3>
-      <a href="pers-details.html">
+      <h3>Name: {{ curr_user.first_name }} {{ curr_user.last_name }}</h3>
+      <h3>Email: {{ curr_user.email }}</h3>
+      <a href="{% url 'core:pers-details' curr_user.id %}">
         <button type="" name="Update-address" value="Update">Update Info</button>
       </a>                 
     </div>
@@ -14,4 +14,62 @@
     <br>
     <br>
   </center>
+
+  <div class="your-order-old" style="margin: 2rem; background-color: white;">
+    <h1 style="background-color: #deb9f7;">Your Orders</h1>
+    {% for booking in curr_user.booking_set.all %}
+    <div class="order-header-old" style="border-top: 0.1rem solid;">
+      <table style="margin-top: 2rem;">
+        <tbody>
+          <tr>
+            <td><h2>Booking No.: XYZ186{{ booking.id }}</h2></td>
+            <td><h2 style="text-align: right;">Status: {{ booking.get_updated_status }}</h2></td>
+          </tr>
+    
+          <tr>
+            <td><h3 style="text-align: center; margin: 0rem 1rem;">Check-in: {{ booking.checkin_time }}</h3></td>
+            <td><h3 style="text-align: center; margin: 0rem 1rem;">Check-out: {{ booking.checkout_time }}</h3></td>
+            <td><h3 style="text-align: center; margin: 0rem 1rem;">Booked on: {{ booking.booked_on }}</h3></td>
+            <td><h3 style="text-align: center; margin: 0rem 2rem;">Order Amount: Rs. {{ booking.total_price }}</h3></td>
+            
+            {% if booking.is_cancellable %}
+            <td>
+              <form action="{% url 'core:cancel-order' curr_user.id booking.id %}" method="post"
+              style="margin: 0rem 1rem;">
+                {% csrf_token %}
+                <button type="submit" style="margin-top: 0rem;">Cancel booking</button>
+              </form>
+            </td>
+            {% endif %}
+          </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="Cart-Container-old">
+      <div class="Cartitems-old">
+        <div class="imgb">
+          <a href="{% url 'core:hotel-details' curr_user.id booking.hotel.id %}">
+            <img src="{% static booking.hotel.get_img_name %}"/>
+          </a>
+        </div>
+        <div class="itom-old">
+          <a href="{% url 'core:hotel-details' curr_user.id booking.hotel.id %}">
+            <h1 class="Name-old">{{ booking.hotel.name }}</h1>
+          </a>
+          <h3 class="Description-old">{{ booking.hotel.stars }}-star</h3>
+          <h3 class="Description-old">{{ booking.hotel.city.name }}</h3>
+        </div>
+        
+        <div class="Description-old">{{ booking.room_type }}</div>
+      </div>
+    </div>
+  
+    {% empty %}
+    <h2>You have no bookings yet.</h2>
+    
+    {% endfor %}
+    
+  </div>
   {% endblock content %}

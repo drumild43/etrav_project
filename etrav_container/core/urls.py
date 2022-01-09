@@ -12,3 +12,8 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('<int:user_id>/logout/', views.logout, name='logout')   
 ]
+
+# profile
+urlpatterns += [
+    path('<int:user_id>/account/', views.account, name='account'),
+]
