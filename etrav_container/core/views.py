@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Booking, EtravUser
+from .models import Booking, EtravUser, Hotel
 
 def home(request, user_id=None):
     if user_id:
@@ -145,3 +145,14 @@ def cancel_booking(request, user_id, booking_id):
         booking.save()
         
         return HttpResponseRedirect(reverse('core:account', args=(user_id,)))
+
+def hotel_details(request, hotel_id, user_id=None):
+    if request.method == 'GET':
+        hotel = Hotel.objects.get(id = hotel_id)
+        context = {'hotel': hotel}
+
+        if user_id:
+            curr_user = EtravUser.objects.get(pk=user_id)
+            context['curr_user'] = curr_user
+
+        return render(request, 'core/hotel-details.html', context=context)

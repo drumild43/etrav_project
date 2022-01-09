@@ -19,3 +19,12 @@ urlpatterns += [
     path('<int:user_id>/can-booking/<int:booking_id>/', views.cancel_booking, name='cancel-booking'),
     path('<int:user_id>/personal-details/', views.pers_details, name='pers-details')
 ]
+
+# hotel-related
+urlpatterns += [
+    path('hotels/<int:hotel_id>/', views.hotel_details, name='anon_hotel-details'),
+    path('<int:user_id>/hotels/<int:hotel_id>/', views.hotel_details, name='hotel-details'),
+    path('hotels/<int:hotel_id>/signup/', views.signup, name='hotel-signup-redirect'),
+    path('hotels/<int:hotel_id>/signin/', views.signin, name='hotel-signin-redirect'),
+    path('<int:user_id>/submit-review/<int:hotel_id>/', views.review, name='review')
+]
