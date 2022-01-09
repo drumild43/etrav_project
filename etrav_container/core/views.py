@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import EtravUser
+from .models import Booking, EtravUser
 
 def home(request, user_id=None):
     if user_id:
@@ -101,3 +101,11 @@ def logout(request, user_id):
 def account(request, user_id):
     curr_user = EtravUser.objects.get(pk=user_id)
     return render(request, 'core/account.html', context={'curr_user': curr_user})
+
+def cancel_booking(request, user_id, booking_id):
+    if request.method == 'POST':
+        booking = Booking.objects.get(pk=booking_id)
+        booking.status = 'X'
+        booking.save()
+        
+        return HttpResponseRedirect(reverse('core:account', args=(user_id,)))

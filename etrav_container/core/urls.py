@@ -16,4 +16,5 @@ urlpatterns = [
 # profile
 urlpatterns += [
     path('<int:user_id>/account/', views.account, name='account'),
+    path('<int:user_id>/can-booking/<int:booking_id>/', views.cancel_booking, name='cancel-booking'),
 ]
