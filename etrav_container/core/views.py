@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Booking, EtravUser, Hotel
+from .models import Booking, EtravUser, Hotel, Review
 
 def home(request, user_id=None):
     if user_id:
@@ -156,3 +156,31 @@ def hotel_details(request, hotel_id, user_id=None):
             context['curr_user'] = curr_user
 
         return render(request, 'core/hotel-details.html', context=context)
+
+def review(request, user_id, hotel_id):
+    if request.method == 'POST':
+        review_text = request.POST['review-text']
+        rating = int(request.POST['rating'])
+
+        review_list = list(Review.objects.filter(
+            user__pk=user_id,
+            hotel__pk=hotel_id
+        ))
+
+        # if review already exists
+        if review_list:
+            review = review_list[0]
+            review.review_text = review_text
+            review.rating = rating
+
+        # if review does not exist, create new review
+        else:
+            review = Review(
+                hotel=Hotel.objects.get(pk=hotel_id),
+                user=EtravUser.objects.get(pk=user_id),
+                review_text=review_text,
+                rating=rating
+            )
+
+        review.save()
+        return HttpResponseRedirect(reverse('core:hotel-details', args=(user_id, hotel_id)))
