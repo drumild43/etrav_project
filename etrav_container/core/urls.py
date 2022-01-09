@@ -17,4 +17,5 @@ urlpatterns = [
 urlpatterns += [
     path('<int:user_id>/account/', views.account, name='account'),
     path('<int:user_id>/can-booking/<int:booking_id>/', views.cancel_booking, name='cancel-booking'),
+    path('<int:user_id>/personal-details/', views.pers_details, name='pers-details')
 ]

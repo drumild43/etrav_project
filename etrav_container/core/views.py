@@ -102,6 +102,42 @@ def account(request, user_id):
     curr_user = EtravUser.objects.get(pk=user_id)
     return render(request, 'core/account.html', context={'curr_user': curr_user})
 
+def pers_details(request, user_id):
+    curr_user = EtravUser.objects.get(pk=user_id)
+
+    if request.method == 'GET':
+        return render(request, 'core/pers-details.html', context={'curr_user': curr_user})
+
+    if request.method == 'POST':
+        curr_password = request.POST['curr_password'].strip()
+        new_first_name = request.POST.get('first_name')
+        new_last_name = request.POST.get('last_name')
+        new_password = request.POST.get('new_password')
+
+        if curr_user.check_password(curr_password):
+            if new_first_name:
+                curr_user.first_name = new_first_name
+
+            if new_last_name:
+                curr_user.last_name = new_last_name
+
+            if new_password:
+                curr_user.set_password(new_password)
+
+            curr_user.save()
+
+            return HttpResponseRedirect(reverse('core:account', args=(user_id,)))
+
+        # if current password entered is wrong
+        else:
+            context = {
+                'curr_user': curr_user,
+                'new_first_name': new_first_name,
+                'new_last_name': new_last_name,
+                'error_message': "The current password you have entered is incorrect."
+            }
+            return render(request, 'core/pers-details.html', context=context)
+
 def cancel_booking(request, user_id, booking_id):
     if request.method == 'POST':
         booking = Booking.objects.get(pk=booking_id)
