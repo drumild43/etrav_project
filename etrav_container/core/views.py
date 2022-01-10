@@ -321,3 +321,7 @@ def checkout(request, user_id, hotel_id):
         booking.save()
 
         return HttpResponseRedirect(reverse('core:pay-suc', args=(user_id,)))
+
+def pay_suc(request, user_id):
+    curr_user = EtravUser.objects.get(pk=user_id)
+    return render(request, 'core/paysuc.html', context={'curr_user': curr_user})
