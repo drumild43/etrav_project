@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    
+    <title>HotelSPOT</title>
+    <style>
+      body{
+        background-image: url("{% static 'core/images/bg.webp' %}");
+        background-color: rgb(255, 255, 255);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-attachment: fixed
+      }
+    </style>
+  </head>
+  
+  <body>
+    <section class="signup">
+      <div class="logo">
+        <a href="{% url 'store:homepage' curr_user.id %}">HotelSPOT</a>
+      </div>
+      
+      <div class="pger">
+        <form action="{% url 'core:pers-details' curr_user.id%}" method="post"> 
+          {% csrf_token %}
+          <div class="tit">
+            <h1 style="margin-top: 1rem;">Update Personal Info </h1>
+          </div>
+          
+          <div class="signupcontainer">   
+            <input type="text" placeholder="New First Name (optional)" name="first_name" {% if new_first_name %} value="{{ new_first_name }}" {% endif %}>  
+            <input type="text" placeholder="New Last Name (optional)" name="last_name" {% if new_last_name %} value="{{ new_last_name }}" {% endif %}>
+             
+            <input type="password" placeholder="Current Password" name="curr_password" required>  
+            <input type="password" placeholder="New Password (optional)" name="new_password">
+
+            <h4>Note: Your current password must be entered to make changes.</h4>
+            <br>
+            {% if error_message %}
+            <h4 style="color: red;">{{ error_message }}</h4>
+            <br>
+            {% endif %}
+
+            <button type="submit">Update</button>
+          </div>
+        </form> 
+      </div> 
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="{% static 'core/js/index.js' %}"></script> 
+  </body>
+</html>

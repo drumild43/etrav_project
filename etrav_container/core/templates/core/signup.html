@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    
+    <title>HotelSPOT</title>
+    <style>
+      body{
+        background-image: url("{% static 'core/images/sign.jpg' %}");
+        background-color: rgb(255, 255, 255);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-attachment: fixed
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="signup">
+      <div class="logo">
+        {% if curr_user %}
+        <a href="{% url 'core:homepage' curr_user.id %}">
+        {% else %}
+        <a href="{% url 'core:anon_homepage' %}">
+        {% endif %}
+          HotelSPOT
+        </a>
+      </div>
+      
+      <div class="pger">
+        {% if hotel_id %}
+        <form action="{% url 'core:hotel-signup-redirect' hotel_id %}" method="post">
+        {% else %}
+        <form action="{% url 'core:signup' %}" method="post">
+        {% endif %}
+        
+          {% csrf_token %}
+          <div class="tit" style="margin-top: 1rem;">
+            <h1>Sign up</h1>
+          </div>
+          
+          <div class="signupcontainer">   
+            <input type="text" placeholder="Enter First Name" name="first_name" {% if first_name %} value="{{ first_name }}" {% endif %}  required>  
+            <input type="text" placeholder="Enter Last Name" name="last_name" {% if last_name %} value="{{ last_name }}" {% endif %} required>  
+            <input type="text" placeholder="Enter Email ID" name="email" {% if email %} value="{{ email }}" {% endif %} required>  
+             
+            <input type="password" placeholder="Enter Password" name="password1" required>  
+            <input type="password" placeholder="Retype Password" name="password2" required>
+
+            <input type="submit" name="signup-button" value="Get Started" style="font-size: 1rem;">
+
+          {% if already_exists %}
+            {% if hotel_id %}
+            <p><strong>An account with this email already exists. Please</strong> <a href="{% url 'core:hotel-signin-redirect' hotel_id %}" style="color: blue;"><u>log in</u></a> <strong>instead.</strong></p>
+            {% else %}
+            <p><strong>An account with this email already exists. Please</strong> <a href="{% url 'core:signin' %}" style="color: blue;"><u>log in</u></a> <strong>instead.</strong></p>
+            {% endif %}
+          {% endif %}
+
+          {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+          {% endif %}
+          </div>
+        </form> 
+      </div>  
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="{% static 'core/js/index.js' %}"></script> 
+  </body>
+</html>

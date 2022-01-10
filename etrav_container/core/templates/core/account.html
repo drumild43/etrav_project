@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+  {% block content %}
+  <center>
+    <div class="update" style="margin-top: 6rem;">      
+      <h2><u>Account Info</u></h2>
+      <h3>Name: {{ curr_user.first_name }} {{ curr_user.last_name }}</h3>
+      <h3>Email: {{ curr_user.email }}</h3>
+      <a href="{% url 'core:pers-details' curr_user.id %}">
+        <button type="" name="Update-address" value="Update">Update</button>
+      </a>                 
+    </div>
+    <br>
+    <br>
+    <br>
+  </center>
+
+  <div class="your-order-old" style="margin: 2rem; background-color: white;">
+    <h1 style="background-color: #deb9f7;">Your Orders</h1>
+    {% for booking in curr_user.booking_set.all %}
+    <div class="order-header-old" style="border-top: 0.1rem solid;">
+      <table style="margin-top: 2rem;">
+        <tbody>
+          <tr>
+            <td><h2>Booking No.: XYZ186{{ booking.id }}</h2></td>
+            <td><h2 style="text-align: right;">Status: {{ booking.get_updated_status }}</h2></td>
+          </tr>
+          <tr>
+            <td><h3 style="text-align: center; margin: 0rem 1rem;">Check-in: {{ booking.checkin_time }}</h3></td>
+            <td><h3 style="text-align: center; margin: 0rem 1rem;">Check-out: {{ booking.checkout_time }}</h3></td>
+            {% if booking.is_cancellable %}
+            <td>
+              <form action="{% url 'core:cancel-booking' curr_user.id booking.id %}" method="post"
+              style="margin: 0rem 1rem; padding: 0;">
+                {% csrf_token %}
+                <button type="submit" style="margin-top: 0rem; background-color: red;">
+                  Cancel booking
+                </button>
+              </form>
+            </td>
+            {% endif %}
+          </tr>
+
+          <tr>
+            <td><h3 style="text-align: center; margin: 0rem 1rem;">Booked on: {{ booking.booked_on }}</h3></td>
+            <td><h3 style="text-align: center; margin: 0rem 2rem;">Order Amount: Rs. {{ booking.total_price }}</h3></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="imgb">
+                <a href="{% url 'core:hotel-details' curr_user.id booking.hotel.id %}">
+                  <img src="{% static booking.hotel.get_img_name %}"/>
+                </a>
+              </div>
+            </td>
+            <td>
+              <div class="itom-old">
+                <a href="{% url 'core:hotel-details' curr_user.id booking.hotel.id %}">
+                  <h1 class="Name-old">{{ booking.hotel.name }}</h1>
+                </a>
+                <h3 class="Description-old">{{ booking.hotel.stars }}-star</h3>
+                <h3 class="Description-old">{{ booking.hotel.city.name }}</h3>
+              </div>
+              <div class="Description-old">
+                {{ booking.get_room_count }} x {{ booking.get_room_type_display }}s
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    {% empty %}
+    <h2>You have no bookings yet.</h2>
+    
+    {% endfor %}
+    
+  </div>
+  {% endblock content %}

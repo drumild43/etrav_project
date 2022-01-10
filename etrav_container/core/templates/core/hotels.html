@@ -1,0 +1,188 @@
+{% extends 'core/base.html' %}
+{% load static %}
+    
+  {% block content %}
+  <div class="search-container">
+    <div class="hotel_content">
+      <br>
+      <div class="info">
+        <br>
+        <br>
+        <h2>Book Hotels</h2>
+        <h4>Your Dream Destination Awaits...</h4>
+      </div>
+      <br>
+          {% if curr_user %}
+          <form action="{% url 'core:hotels' curr_user.id %}" method="get" id="filter-form">
+          {% else %}
+          <form action="{% url 'core:anon_hotels' %}" method="get" id="filter-form">
+          {% endif %}
+            <div class="item">
+              <select id="City" name="city" class="search_bar">
+                <option value="" {% if not city %}selected{% endif %}> 
+                  All Cities
+                </option>
+                <option value="Ahmedabad" {% if city == "Ahmedabad" %}selected{% endif %}>
+                  Ahmedabad
+                </option>
+                <option value="Bengaluru" {% if city == "Bengaluru" %}selected{% endif %}>
+                  Bengaluru
+                </option>
+                <option value="Chennai" {% if city == "Chennai" %}selected{% endif %}>
+                  Chennai
+                </option>
+                <option value="Delhi" {% if city == "Delhi" %}selected{% endif %}>
+                  Delhi
+                </option>
+                <option value="Hyderabad" {% if city == "Hyderabad" %}selected{% endif %}>
+                  Hyderabad
+                </option>
+                <option value="Jaipur" {% if city == "Jaipur" %}selected{% endif %}>
+                  Jaipur
+                </option>
+                <option value="Kolkata" {% if city == "Kolkata" %}selected{% endif %}>
+                  Kolkata
+                </option>
+                <option value="Mumbai" {% if city == "Mumbai" %}selected{% endif %}>
+                  Mumbai
+                </option>
+                <option value="Pune" {% if city == "Pune" %}selected{% endif %}>
+                  Pune
+                </option>
+                <option value="Surat" {% if city == "Surat" %}selected{% endif %}>
+                  Surat
+                </option>
+              </select>
+              </i>
+            </div>
+
+            <div class="item">
+              <label for="checkin" style="font-size: 1rem;">Check-in date:</label>
+              <input name="checkin-date" id="checkin" type="date" class="search_bar" 
+              {% if checkin_date %}value="{{ checkin_date }}" {% endif %}
+              style="font-size: 1rem;"></i>
+            </div>
+
+            <div class="item">
+              <label for="checkout" style="font-size: 1rem;">Check-out date:</label>
+              <input name="checkout-date" id="checkout" type="date" class="search_bar" 
+              {% if checkout_date %}value="{{ checkout_date }}" {% endif %}
+              style="font-size: 1rem;"></i>
+            </div>
+
+            <div class="item">
+              <input type="number" name="person-count" placeholder="Number of People" 
+              {% if person_count %}value="{{ person_count }}" {% endif %} 
+              style="font-size: 1rem;" class="search_bar"></i>
+            </div>
+
+            <button type="submit" style="margin: 1rem;">
+              Search
+            </button>
+          </form>
+    </div>
+  </div>
+    
+  <section class="section all-products" id="products" style="padding: 3rem 5rem;">
+    <div class="top-container">
+      <div class="filter">
+        <form>
+          <select id="sort" name="sort" form="filter-form" style="margin: 1rem;">
+            <option value="" {% if not sort_criterion %}selected{% endif %}>
+              Sort by: None
+            </option>
+            <option value="sort_price_HtoL" {% if sort_criterion == "sort_price_HtoL" %}selected{% endif %}>
+              Sort by Price (High to Low)
+            </option>
+            <option value="sort_price_LtoH" {% if sort_criterion == "sort_price_LtoH" %}selected{% endif %}>
+              Sort by Price (Low to High)
+            </option>
+            <option value="sort_rating_HtoL" {% if sort_criterion == "sort_rating_HtoL" %}selected{% endif %}>
+              Sort by User Rating (High to Low)
+            </option>
+            <option value="sort_rating_LtoH" {% if sort_criterion == "sort_rating_LtoH" %}selected{% endif %}>
+              Sort by User Rating (Low to High)
+            </option>
+            <option value="sort_name_AtoZ" {% if sort_criterion == "sort_name_AtoZ" %}selected{% endif %}>
+              Sort by Name (A to Z)
+            </option>
+            <option value="sort_name_ZtoA" {% if sort_criterion == "sort_name_ZtoA" %}selected{% endif %}>
+              Sort by Name (Z to A)
+            </option>
+          </select>
+
+          <input type="checkbox" id="one-star" form="filter-form"
+          name="one-star-filter" {% if one_star_filter %}checked{% endif %}>
+          <label for="one-star" style="margin-right: 0.7rem;">1-star</label>
+
+          <input type="checkbox" id="two-star" form="filter-form"
+          name="two-star-filter" {% if two_star_filter %}checked{% endif %}>
+          <label for="two-star" style="margin-right: 0.7rem;">2-star</label>
+
+          <input type="checkbox" id="three-star" form="filter-form"
+          name="three-star-filter" {% if three_star_filter %}checked{% endif %}>
+          <label for="three-star" style="margin-right: 0.7rem;">3-star</label>
+
+          <input type="checkbox" id="four-star" form="filter-form"
+          name="four-star-filter" {% if four_star_filter %}checked{% endif %}>
+          <label for="four-star" style="margin-right: 0.7rem;">4-star</label>
+
+          <input type="checkbox" id="five-star" form="filter-form"
+          name="five-star-filter" {% if five_star_filter %}checked{% endif %}>
+          <label for="five-star" style="margin-right: 0.7rem;">5-star</label>
+
+          <button type="submit" form="filter-form" style="margin: 1rem;">
+            Apply
+          </button>
+        </form>
+      </div>
+    </div>
+    <br>
+    {% if city %}
+      <h2 style="color: white; text-align: center;">Showing hotels in {{ city }}</h2>
+    {% endif %}
+            
+    <div class="categories">
+      <div class="prods-center container">
+        {% for hotel in hotels %}
+        <div class="prods">
+          <div class="prods-hd">
+            <img src="{% static hotel.get_img_name %}" alt="">
+          </div>
+          
+          <div class="prods-footer">
+            <h3 style="font-size: 1.5rem;">{{ hotel.name }}</h3>
+
+            <div class="rating">
+              <h5 style="color: rgba(255, 255, 255, 0.945); font-weight: 100;">{{ hotel.city.name }}</h5>
+              <h5 style="color: rgba(255, 255, 255, 0.829); font-weight: 100;">User Rating: {{ hotel.get_avg_rating }}/5</h5>
+            </div>
+            
+            <h3 class="price">Rs. {{ hotel.standard_room_price }}</h3>
+            <h5>per night</h5>
+            {% if curr_user %}
+            <form action="{% url 'core:hotel-details' curr_user.id hotel.id %}" 
+            style="padding: 0rem; background-color: transparent;" method="get">
+            {% else %}
+            <form action="{% url 'core:anon_hotel-details' hotel.id %}" 
+            style="padding: 0rem; background-color: transparent;" method="get">
+            {% endif %}
+              {% if checkin_date %}
+              <input type="hidden" name="checkin-date" value="{{ checkin_date }}">
+              {% endif %}
+              {% if checkout_date %}
+              <input type="hidden" name="checkout-date" value="{{ checkout_date }}">
+              {% endif %}
+              {% if person_count %}
+              <input type="hidden" name="person-count" value="{{ person_count }}">
+              {% endif %}
+              <button type="submit" style="margin: 0.8rem;">View</button>
+            </form>
+          </div>
+        </div> 
+        {% endfor %}
+      </div>
+    </div>
+  </section>  
+
+  {% endblock content %}

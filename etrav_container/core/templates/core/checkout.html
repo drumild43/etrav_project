@@ -1,0 +1,96 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+  {% block content %}
+  <div class="Cart-Container">
+    <div class="Cartitems">
+      <div class="itom" style="margin-top: 6rem;">
+        <h1 class="Name">{{ hotel.name }}</h1>
+        <h2 style="text-align: center; color: white;">{{ hotel.city.name }}</h2>
+      </div>
+      {% if room_type == "std" %}
+      <div class="Amount">
+        <p>You are Booking:- {{ room_count }} x Standard King Room(s)<br>
+          for {{ num_of_nights }} nights</p>
+      </div>
+      {% else %}
+      <div class="Amount">
+        <p>You are Booking:- {{ room_count }} x Deluxe Suite Room(s)<br>
+          for {{ num_of_nights }} nights</p>
+      </div>
+      {% endif %}
+      
+      <div class="Checkout-table">
+        <table>
+          <tr>
+            <td>
+              <table>
+                <tr>
+                  <td>
+                    <img src="{% static hotel.get_img_name %}" alt="">
+                  </td>
+                </tr>
+              </table>
+            </td>
+            
+            <td>
+              <table style="float: right;">
+                <div class="ct">PAYMENT</div>
+                <tr>
+                  <td>Subtotal</td>
+                  <td>{{ total_price }}</td>
+                </tr>
+
+                <tr>
+                  Enter Card Details
+                </tr>
+
+                <br>
+                <tr>
+                  <td style="font-size: 1rem;">
+                    Accepted Cards
+                    <br/>
+                    <img src="{% static 'core/images/card.png' %}">
+                  </td>
+                </tr>
+
+                <tr>
+                  <input class="card_input" type="text" name="alt" placeholder="Full Name" 
+                  style="font-size: 1rem;" required>
+                </tr>
+                <br>
+
+                <tr>
+                  <input class="card_input" type="text" name="alt" placeholder="Card Number" 
+                  style="font-size: 1rem;" required>
+                  <br>
+                  <input class="card_input_cvv" type="password" name="alt" placeholder="CVV" 
+                  style="font-size: 1rem; width: fit-content;" required>
+                </tr>
+                <br>
+
+                <tr>
+                  <td style="text-align: center;">
+                    <form action="{% url 'core:checkout' curr_user.id hotel.id %}" 
+                    method="post" style="text-align: center; padding: 0;">
+                      {% csrf_token %}
+                      <input type="hidden" name="checkin-date" value="{{ checkin_date }}">
+                      <input type="hidden" name="checkout-date" value="{{ checkout_date }}">
+                      <input type="hidden" name="person-count" value="{{ person_count }}">
+                      <input type="hidden" name="room-type" value="{{ room_type }}">
+                      <input type="hidden" name="total-price" value="{{ total_price }}">
+                      <button type="submit" class="Place-button" 
+                      style="margin: 0; height: fit-content;">
+                        Confirm Booking
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

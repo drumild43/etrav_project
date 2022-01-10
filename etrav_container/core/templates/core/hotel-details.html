@@ -1,0 +1,178 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+  {% block content %}
+  <section class="product-details">
+    <div class="details container-md">
+      <div class="left">
+        <div class="main">
+          <img src="{% static hotel.get_img_name %}" alt="">
+        </div>
+      </div>
+      
+      <div class="right" style="margin-top: 7rem;">
+        <h1 style="color: white;">{{ hotel.name }}</h1>
+        <h3>{{ hotel.city.name }}</h3>
+        <h4>{{ hotel.stars }}-star</h4>
+        <h4>User Rating: {{ hotel.get_avg_rating }}/5 (based on {{ hotel.get_review_count }} reviews)</h4>
+        <br>
+        
+        <div class="desc">
+          <h4>Hotel Details</h4>
+          {% if curr_user %}
+              <form id="add-form" class="form" action="{% url 'core:checkout' curr_user.id hotel.id %}" method="get">
+              {% csrf_token %}
+              {% else %}
+              <form id="add-form" class="form" action="{% url 'core:hotel-signin-redirect' hotel.id %}" method="get">
+              {% endif %}
+                <div class="item">
+                  <label for="checkin" style="color: rgb(231, 9, 201);">Check-in date:</label>
+                  <input name="checkin-date" id="checkin" type="date" 
+                  class="search_bar" required style="width: fit-content;"
+                  {% if checkin_date %}value="{{ checkin_date }}" {% endif %}></i>
+                </div>
+                <br>
+                <div class="item">
+                  <label for="checkout" style="color: rgb(231, 9, 201);">Check-out date:</label>
+                  <input name="checkout-date" id="checkout" type="date" 
+                  class="search_bar" required style="width: fit-content;"
+                  {% if checkout_date %}value="{{ checkout_date }}" {% endif %}></i>
+                </div>
+                <br>
+                <div class="item">
+                  <label for="" style="color: rgb(231, 9, 201);">Number of People:</label>
+                  <input type="number" name="person-count" style="width: fit-content;"
+                  placeholder="Number of People" required class="search_bar"
+                  {% if person_count %}value="{{ person_count }}" {% endif %}></i>
+                </div>
+              </form>
+          <p style="color: white;">Note: Each room can be occupied by a maximum of 2 people.</p>
+          
+          <h6 style="margin-right: 2rem;">
+            <table style="margin-right: 2rem;">
+              <tr>
+                <th></th>
+                <th>
+                  Room Types
+                  <br>
+                </th>
+                
+                <th>
+                  Best Prices
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <img src="{% static 'core/images/standard-room.webp' %}">
+                </td>
+                <td>
+                  <h3>Standard King Room</h3>
+                  &#10524 250 sq. ft.</br>
+                  &#10524 Free Wi-Fi</br>
+                  &#10524 Air Conditioning</br>
+                  &#10524 24-hour Room Service</br>
+                  &#10524 Standard size bed</br>
+                </td>
+                <td>
+                  <p style="font-size: 3rem;">Rs. {{ hotel.standard_room_price }}</p> per night per room
+                  <br>
+                  
+                  <form class="form">
+                    <button type="submit" form="add-form" name="room-type" value="std">
+                      Book Now
+                    </button>
+                  </form>
+                </td>
+              </tr>
+                
+              <tr>
+                <td>
+                  <img src="{% static 'core/images/suite-room.webp' %}">
+                </td>
+                <td>
+                  <h3>Deluxe Suite Room</h3>
+                  &#10524 450 sq. ft.</br>
+                  &#10524 Free Wi-Fi</br>
+                  &#10524 Air Conditioning</br>
+                  &#10524 24-hour Room Service</br>
+                  &#10524 King size bed</br>
+                  &#10524 Free Breakfast</br>
+                  &#10524 Complimentary Massage</br>
+                </td>
+                <td>
+                  <p style="font-size: 3rem;">Rs. {{ hotel.suite_price }}</p> per night per room
+                  <br>
+                  <form class="form">
+                    <button type="submit" form="add-form" name="room-type" value="sui">
+                      Book Now
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </table> 
+          </h6>
+        </div>
+        
+        <div class="reviews">
+          <ul>
+            {% if curr_user %}
+            <li>
+              <form action="{% url 'core:review' curr_user.id hotel.id %}" method="post">
+                {% csrf_token %}
+                <div class="review-container">
+                  <select name="rating" required style="width: 5rem;">
+                    <option value="" selected disabled>Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <br>
+                  <textarea placeholder="Write Your review" name="review-text" 
+                  style="padding: 0.3rem;" rows="4" cols="50" required></textarea>
+                  <p style="color: red;">Note: If you submit multiple reviews for a hotel, only your latest review will be valid.</p>
+                  <button type="submit">Submit</button>
+                </div>
+              </form>
+            </li>
+            <br>
+            {% endif %}
+
+            {% for review in hotel.review_set.all %}
+            <li style="margin-bottom: 1rem; background-color: rgba(255, 255, 255, 0.589);">
+              <div class="name" style="margin-left: 0rem;">
+                <h4 style="color: black;"><strong>{{ review.user.first_name }} {{ review.user.last_name }}</strong></h4>
+              </div>
+
+              {% if review.is_verified %}
+              <button type="button" class="verified-but"
+              style="margin: 1rem; background: transparent; color: darkorchid; 
+              border: 2px solid darkorchid; padding: 0.5rem 1rem;">
+                Verified
+              </button>
+              {% endif %}
+
+              <div class="rating" style="margin-left: 1rem;">
+              {% for i in "12345" %}
+                {% if forloop.counter > review.rating %}
+                <i class="bx bx-star fa-xs"></i>
+                {% else %}
+                <i class="bx bxs-star fa-xs"></i>
+                {% endif %}
+              {% endfor %}
+              </div>
+
+              <p style="text-align: center;">{{ review.review_text }}</p>
+            </li>
+            {% endfor %}
+
+            {% if not curr_user %}
+            <li><h4 style="font-size: 2rem;">Sign in to leave a review!</h4></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock content %}
