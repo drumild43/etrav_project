@@ -8,11 +8,13 @@ from django.urls import reverse
 from .models import Booking, EtravUser, Hotel, Review
 
 def home(request, user_id=None):
+    recommended_hotels = Hotel.objects.order_by('?')[:4]
+    context = {'recommended_hotels': recommended_hotels}
+
     if user_id:
         curr_user = EtravUser.objects.get(pk=user_id)
-        context = {'curr_user': curr_user}
-    else:
-        context = {}
+        context['curr_user'] = curr_user
+
     return render(request, 'core/homepage.html', context=context)
 
 def signup(request, hotel_id=None):

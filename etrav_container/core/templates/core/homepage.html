@@ -85,93 +85,43 @@
       <br>
       <h2 id="recomendations">Best Hotels For You</h2>
       <div class="prods-center container">
+        {% for hotel in recommended_hotels %}
         <div class="prods">
           <div class="prods-hd">
-            <img src="{% static 'core/images/Surat/Budget-inn.jpg' %}" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>  
-            </ul>
+            <img src="{% static hotel.get_img_name %}" alt="">
           </div>
+          
           <div class="prods-footer">
-            <a href="hotel-details.html">
-              <h3>Budget Inn</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bx-star fa-xs"></i>
-              <i class="bx bx-star fa-xs"></i>
-            </div>
-            <h3 class="price">₹6500</h3>
-          </div>
-        </div> 
+            <h3 style="font-size: 1.5rem;">{{ hotel.name }}</h3>
 
-        <div class="prods">    
-          <div class="prods-hd">
-            <img src="{% static 'core/images/Surat/hotel-king-s-heritage.jpg' %}" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>  
-            </ul>
-          </div>
-          <div class="prods-footer">
-            <a href="hotel-details.html">
-              <h3>Hotel Kings' Heritage</h3>
-            </a>
             <div class="rating">
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bx-star fa-xs"></i>
-              <i class="bx bx-star fa-xs"></i>
+              <h5 style="color: rgba(255, 255, 255, 0.945); font-weight: 100;">{{ hotel.city.name }}</h5>
+              <h5 style="color: rgba(255, 255, 255, 0.829); font-weight: 100;">User Rating: {{ hotel.get_avg_rating }}/5</h5>
             </div>
-            <h3 class="price">₹5540</h3>
+            
+            <h3 class="price">Rs. {{ hotel.standard_room_price }}</h3>
+            <h5>per night</h5>
+            {% if curr_user %}
+            <form action="{% url 'core:hotel-details' curr_user.id hotel.id %}" 
+            style="padding: 0rem; background-color: transparent;" method="get">
+            {% else %}
+            <form action="{% url 'core:anon_hotel-details' hotel.id %}" 
+            style="padding: 0rem; background-color: transparent;" method="get">
+            {% endif %}
+              {% if checkin_date %}
+              <input type="hidden" name="checkin-date" value="{{ checkin_date }}">
+              {% endif %}
+              {% if checkout_date %}
+              <input type="hidden" name="checkout-date" value="{{ checkout_date }}">
+              {% endif %}
+              {% if person_count %}
+              <input type="hidden" name="person-count" value="{{ person_count }}">
+              {% endif %}
+              <button type="submit" style="margin: 0.8rem;">View</button>
+            </form>
           </div>
         </div>
-
-        <div class="prods">
-          <div class="prods-hd">
-            <img src="{% static 'core/images/Surat/hotel-sifat-international.jpg' %}" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>  
-            </ul>
-          </div>
-          <div class="prods-footer">
-            <a href="hotel-details.html">
-              <h3>Sifat International </h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bx-star fa-xs"></i>
-              <i class="bx bx-star fa-xs"></i>
-            </div>
-            <h3 class="price">₹6500</h3>
-          </div>
-        </div>
-
-        <div class="prods">
-          <div class="prods-hd">
-            <img src="{% static 'core/images/Surat/Lords-Plza.jpg' %}" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-            </ul>
-          </div>
-          <div class="prods-footer">
-            <a href="hotel-details.html">
-              <h3>Lords Plaza</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bxs-star fa-xs"></i>
-              <i class="bx bx-star fa-xs"></i>
-              <i class="bx bx-star fa-xs"></i>
-            </div>
-            <h3 class="price">₹5200</h3>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
     
