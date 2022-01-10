@@ -1,41 +1,84 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
   {% block content %}
-    <div class="search-container">
-      <div class="hotel_content">
-        <div class="info">
-          <br>
-          <h2>Book Hotels</h2>
-          <h4>Your Dream Destination Awaits...</h4>
-          <br>
-        </div>
+  <div class="search-container">
+    <div class="hotel_content">
+      <br>
+      <div class="info">
         <br>
         <br>
-        <div class="booking_info">
-          <div class="booking_details">
+        <h2>Book Hotels</h2>
+        <h4>Your Dream Destination Awaits...</h4>
+      </div>
+      <br>
+          {% if curr_user %}
+          <form action="{% url 'core:hotels' curr_user.id %}" method="get" id="filter-form">
+          {% else %}
+          <form action="{% url 'core:anon_hotels' %}" method="get" id="filter-form">
+          {% endif %}
             <div class="item">
-              <input type="text" placeholder=" Enter City" class="search_bar"></i>
-            </div>
-            
-            <div class="item">
-              <input type="text" placeholder=" Enter Date of booking" class="search_bar"></i>
-            </div>
-  
-            <div class="item">
-              <input type="text" placeholder=" Enter Number of Days Stay" class="search_bar"></i>
-            </div>
-  
-            <div class="item">
-              <input type="Number" placeholder="Number of Rooms" class="search_bar"></i>
+              <select id="City" name="city" class="search_bar" style="font-size: 1rem;">
+                <option value="" selected> 
+                  All Cities
+                </option>
+                <option value="Ahmedabad">
+                  Ahmedabad
+                </option>
+                <option value="Bengaluru">
+                  Bengaluru
+                </option>
+                <option value="Chennai">
+                  Chennai
+                </option>
+                <option value="Delhi">
+                  Delhi
+                </option>
+                <option value="Hyderabad">
+                  Hyderabad
+                </option>
+                <option value="Jaipur">
+                  Jaipur
+                </option>
+                <option value="Kolkata">
+                  Kolkata
+                </option>
+                <option value="Mumbai">
+                  Mumbai
+                </option>
+                <option value="Pune">
+                  Pune
+                </option>
+                <option value="Surat">
+                  Surat
+                </option>
+              </select>
+              </i>
             </div>
 
             <div class="item">
-              <div class="cta active">Search</div>
+              <label for="checkin" style="font-size: 1rem;">Check-in date:</label>
+              <input name="checkin-date" id="checkin" type="date"
+              style="font-size: 1rem;" class="search_bar"></i>
             </div>
-          </div>
-        </div>
-      </div>
+
+            <div class="item">
+              <label for="checkout" style="font-size: 1rem;">Check-out date:</label>
+              <input name="checkout-date" id="checkout" type="date" 
+              style="font-size: 1rem;" class="search_bar"></i>
+            </div>
+
+            <div class="item">
+              <input type="number" name="person-count" style="font-size: 1rem;"
+              placeholder="Number of People" class="search_bar"></i>
+            </div>
+
+            <button type="submit" style="margin: 1rem;">
+              Search
+            </button>
+          </form>
     </div>
+  </div>
     
     <div class="categories">
       <br>

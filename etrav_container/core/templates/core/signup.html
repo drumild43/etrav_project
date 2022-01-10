@@ -24,9 +24,10 @@
   <body>
     <section class="signup">
       <div class="logo">
-        <a href="{% url 'store:homepage' curr_user.id %}">
+        {% if curr_user %}
+        <a href="{% url 'core:homepage' curr_user.id %}">
         {% else %}
-        <a href="{% url 'store:anon_homepage' %}">
+        <a href="{% url 'core:anon_homepage' %}">
         {% endif %}
           HotelSPOT
         </a>

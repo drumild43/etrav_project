@@ -1,4 +1,4 @@
-import datetime
+import datetime, math
 
 from django.db import models
 from django.db.models import Avg, Count
@@ -44,7 +44,6 @@ class EtravUser(AbstractBaseUser):
 
 class Hotel(models.Model):
     name = models.CharField(max_length=250)
-    description = models.TextField()
     city = models.ForeignKey('City', on_delete=models.PROTECT)
     standard_room_price = models.PositiveIntegerField()
     suite_price = models.PositiveIntegerField()
@@ -54,7 +53,7 @@ class Hotel(models.Model):
         return self.name
 
     def get_img_name(self):
-        return "store/images/" + self.name + ".jpg"
+        return "core/images/" + self.city.name + "/" + self.name + ".jpg"
 
     def get_avg_rating(self):
         avg_rating = Review.objects.filter(
@@ -130,6 +129,9 @@ class Booking(models.Model):
         # allow cancellation till 24 hours before check-in
         return self.status != self.CANCELLED and \
             timezone.now() < self.checkin_time - datetime.timedelta(hours=24)
+
+    def get_room_count(self):
+        return math.ceil(self.person_count/2)
 
 class Review(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)

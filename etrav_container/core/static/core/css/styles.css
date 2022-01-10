@@ -58,10 +58,8 @@ li {
   
 .header {
     position: relative;
-    background-image: url('bg.jpg');
-    width: 100%;
-    min-height: 100vh;
-    
+    background-image: url('../images/bg.jpg');
+    width: 100%;    
     overflow: hidden;
 }
   

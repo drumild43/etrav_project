@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,9 +57,9 @@
             <br>
             Not a member? 
             {% if hotel_id %}
-            <a href="{% url 'store:product-signup-redirect' hotel_id %}" style="color: blue;"><u>Create Account</u></a>
+            <a href="{% url 'core:hotel-signup-redirect' hotel_id %}" style="color: blue;"><u>Create Account</u></a>
             {% else %}
-            <a href="{% url 'store:signup' %}" style="color: blue;"><u>Create Account</u></a>
+            <a href="{% url 'core:signup' %}" style="color: blue;"><u>Create Account</u></a>
             {% endif %}
           </div>   
         </form> 

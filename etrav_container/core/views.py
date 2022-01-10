@@ -196,14 +196,14 @@ def hotels(request, user_id=None):
             'hotels': hotels, 
             'sort_criterion': sort_criterion,
             'city': city,
-            'one-star-filter': one_star,
-            'two-star-filter': two_star,
-            'three-star-filter': three_star,
-            'four-star-filter': four_star,
-            'five-star-filter': five_star,
-            'checkin-date': request.GET.get('checkin-date'),
-            'checkout-date': request.GET.get('checkout-date'),
-            'person-count': request.GET.get('person-count')
+            'one_star_filter': one_star,
+            'two_star_filter': two_star,
+            'three_star_filter': three_star,
+            'four_star_filter': four_star,
+            'five_star_filter': five_star,
+            'checkin_date': request.GET.get('checkin-date'),
+            'checkout_date': request.GET.get('checkout-date'),
+            'person_count': request.GET.get('person-count')
         }
         if user_id:
             curr_user = EtravUser.objects.get(pk=user_id)
@@ -217,9 +217,9 @@ def hotel_details(request, hotel_id, user_id=None):
 
         context = {
             'hotel': hotel,
-            'checkin-date': request.GET.get('checkin-date'),
-            'checkout-date': request.GET.get('checkout-date'),
-            'person-count': request.GET.get('person-count')
+            'checkin_date': request.GET.get('checkin-date'),
+            'checkout_date': request.GET.get('checkout-date'),
+            'person_count': request.GET.get('person-count')
         }
 
         if user_id:
@@ -263,17 +263,17 @@ def str_to_datetime(date_string, checkin=False, checkout=False):
     """
     if checkin:
         return datetime.datetime(
-            year=date_string[:4], 
-            month=date_string[5:7],
-            day=date_string[8:],
+            year=int(date_string[:4]), 
+            month=int(date_string[5:7]),
+            day=int(date_string[8:]),
             hour=14
         )
 
     if checkout:
         return datetime.datetime(
-            year=date_string[:4], 
-            month=date_string[5:7],
-            day=date_string[8:],
+            year=int(date_string[:4]), 
+            month=int(date_string[5:7]),
+            day=int(date_string[8:]),
             hour=12
         )
 
@@ -286,20 +286,23 @@ def checkout(request, user_id, hotel_id):
         person_count = int(request.GET.get('person-count'))
         room_count = math.ceil(person_count/2)
 
-        checkin_time = str_to_datetime(request.GET.get('checkin-date'))
-        checkout_time = str_to_datetime(request.GET.get('checkout-date'))
-        num_of_nights = (checkout_time - checkin_time).days
+        checkin_date = request.GET.get('checkin-date')
+        checkout_date = request.GET.get('checkout-date')
+
+        checkin_time = str_to_datetime(checkin_date, checkin=True)
+        checkout_time = str_to_datetime(checkout_date, checkout=True)
+        num_of_nights = (checkout_time - checkin_time).days + 1
 
         if room_type == "std":
             total_price = room_count * hotel.standard_room_price * num_of_nights
         elif room_type == "sui":
-            total_price = room_count * hotel.suite_room_price * num_of_nights        
+            total_price = room_count * hotel.suite_price * num_of_nights        
 
         context = {
             'curr_user': curr_user, 
             'hotel': hotel,
-            'checkin_time': checkin_time,
-            'checkout_time': checkout_time,
+            'checkin_date': checkin_date,
+            'checkout_date': checkout_date,
             'num_of_nights': num_of_nights,
             'person_count': person_count,
             'room_type': room_type,
@@ -309,11 +312,14 @@ def checkout(request, user_id, hotel_id):
         return render(request, 'core/checkout.html', context=context)
 
     if request.method == 'POST':
+        checkin_time = str_to_datetime(request.POST.get('checkin-date'), checkin=True)
+        checkout_time = str_to_datetime(request.POST.get('checkout-date'), checkout=True)
+
         booking = Booking(
             hotel=hotel, 
             user=curr_user,
-            checkin_time=request.POST.get('checkin-time'),
-            checkout_time=request.POST.get('checkout-time'),
+            checkin_time=checkin_time,
+            checkout_time=checkout_time,
             total_price = request.POST.get('total-price'),
             person_count = request.POST.get('person-count'),
             room_type = request.POST.get('room-type')
