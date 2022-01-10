@@ -30,3 +30,9 @@ urlpatterns += [
     path('hotels/<int:hotel_id>/signin/', views.signin, name='hotel-signin-redirect'),
     path('<int:user_id>/submit-review/<int:hotel_id>/', views.review, name='review')
 ]
+
+# checkout
+urlpatterns += [
+    path('<int:user_id>/checkout/<int:hotel_id>', views.checkout, name='checkout'),
+    path('<int:user_id>/pay-suc/', views.pay_suc, name='pay-suc')
+]

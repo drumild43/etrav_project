@@ -5,7 +5,7 @@
     <div class="details container-md">
       <div class="left">
         <div class="main">
-          <img src="{% static product.get_img_name %}" alt="">
+          <img src="{% static hotel.get_img_name %}" alt="">
         </div>
       </div>
       
@@ -21,7 +21,7 @@
           <div class="booking_info">
             <div class="booking_details">
               {% if curr_user %}
-              <form id="add-form" class="form" action="{% url 'core:checkout' curr_user.id hotel.id %}" method="post">
+              <form id="add-form" class="form" action="{% url 'core:checkout' curr_user.id hotel.id %}" method="get">
               {% csrf_token %}
               {% else %}
               <form id="add-form" class="form" action="{% url 'core:hotel-signin-redirect' hotel.id %}" method="get">
@@ -77,6 +77,7 @@
                 <br>
                 
                 <form class="form">
+                  <input type="hidden" form="add-form" name="room-type" value="std">
                   <button type="submit" form="add-form">Book Now</button>
                 </form>
               </td>
@@ -100,6 +101,7 @@
                 <p>Rs. {{ hotel.suite_price }}</p> per night per room
                 <br>
                 <form class="form">
+                  <input type="hidden" form="add-form" name="room-type" value="sui">
                   <button type="submit" form="add-form">Book Now</button>
                 </form>
               </td>

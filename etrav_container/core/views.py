@@ -1,4 +1,5 @@
-from django import http
+import datetime, math
+
 from django.db.models import Avg
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -254,3 +255,69 @@ def review(request, user_id, hotel_id):
 
         review.save()
         return HttpResponseRedirect(reverse('core:hotel-details', args=(user_id, hotel_id)))
+
+def str_to_datetime(date_string, checkin=False, checkout=False):
+    """
+    Converts a date string in YYYY-MM-DD format to a datetime.
+    Time is appended based on whether checkin or checkout is true.
+    """
+    if checkin:
+        return datetime.datetime(
+            year=date_string[:4], 
+            month=date_string[5:7],
+            day=date_string[8:],
+            hour=14
+        )
+
+    if checkout:
+        return datetime.datetime(
+            year=date_string[:4], 
+            month=date_string[5:7],
+            day=date_string[8:],
+            hour=12
+        )
+
+def checkout(request, user_id, hotel_id):
+    curr_user = EtravUser.objects.get(pk=user_id)
+    hotel = Hotel.objects.get(pk=hotel_id)
+
+    if request.method == 'GET':
+        room_type = request.GET.get('room-type')
+        person_count = int(request.GET.get('person-count'))
+        room_count = math.ceil(person_count/2)
+
+        checkin_time = str_to_datetime(request.GET.get('checkin-date'))
+        checkout_time = str_to_datetime(request.GET.get('checkout-date'))
+        num_of_nights = (checkout_time - checkin_time).days
+
+        if room_type == "std":
+            total_price = room_count * hotel.standard_room_price * num_of_nights
+        elif room_type == "sui":
+            total_price = room_count * hotel.suite_room_price * num_of_nights        
+
+        context = {
+            'curr_user': curr_user, 
+            'hotel': hotel,
+            'checkin_time': checkin_time,
+            'checkout_time': checkout_time,
+            'num_of_nights': num_of_nights,
+            'person_count': person_count,
+            'room_type': room_type,
+            'room_count': room_count,
+            'total_price': total_price
+        }
+        return render(request, 'core/checkout.html', context=context)
+
+    if request.method == 'POST':
+        booking = Booking(
+            hotel=hotel, 
+            user=curr_user,
+            checkin_time=request.POST.get('checkin-time'),
+            checkout_time=request.POST.get('checkout-time'),
+            total_price = request.POST.get('total-price'),
+            person_count = request.POST.get('person-count'),
+            room_type = request.POST.get('room-type')
+        )
+        booking.save()
+
+        return HttpResponseRedirect(reverse('core:pay-suc', args=(user_id,)))

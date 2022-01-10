@@ -84,7 +84,7 @@ class Booking(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.PROTECT)
     user = models.ForeignKey(EtravUser, on_delete=models.CASCADE)
     
-    booked_on = models.DateTimeField()
+    booked_on = models.DateTimeField(auto_now_add=True)
     total_price = models.PositiveIntegerField()
     checkin_time = models.DateTimeField()
     checkout_time = models.DateTimeField()

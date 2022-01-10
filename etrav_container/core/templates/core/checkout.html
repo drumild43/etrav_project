@@ -4,11 +4,20 @@
   <div class="Cart-Container">
     <div class="Cartitems">
       <div class="itom">
-        <h1 class="Name">Hotel Name</h1>
+        <h1 class="Name">{{ hotel.name }}</h1>
+        <h2>{{ hotel.city.name }}</h2>
       </div>
+      {% if room_type == "std" %}
       <div class="Amount">
-        You are Booking:- Number of Rooms
+        <p>You are Booking:- {{ room_count }} x Standard King Room(s)<br>
+          for {{ num_of_nights }} nights</p>
       </div>
+      {% else %}
+      <div class="Amount">
+        <p>You are Booking:- {{ room_count }} x Deluxe Suite Room(s)<br>
+          for {{ num_of_nights }} nights</p>
+      </div>
+      {% endif %}
       
       <div class="Checkout-table">
         <table>
@@ -17,7 +26,7 @@
               <table>
                 <tr>
                   <td>
-                    <img src="images/koljata.jpg" alt="">
+                    <img src="{% static hotel.get_img_name %}" alt="">
                   </td>
                 </tr>
               </table>
@@ -27,31 +36,48 @@
               <table style="float: right;">
                 <div class="ct">PAYMENT</div>
                 <tr>
-                  <td>
-                    Card Type
-                    <br>
-                    <img src="./images/card.png">
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input type="checkbox">
-                    Via UPI<br>
-                    <input class="card_input" type="text" name="alt" placeholder="Enter Card Number">
-                    <input class="card_input_cvv" type="text" name="alt" placeholder="Enter CVV">
-                  </td>
-                </tr>
-                <tr>
                   <td>Subtotal</td>
-                  <td>$200</td>
+                  <td>{{ total_price }}</td>
                 </tr>
+
                 <tr>
-                  <td>Items</td>
-                  <td>3</td>
+                  Enter Card Details
                 </tr>
+
+                <br>
                 <tr>
-                  <td>
-                    <a href="paysuc.html" class="Place-button">Place Order</a>
+                  <td style="font-size: 1rem;">
+                    Accepted Cards
+                    <br/>
+                    <img src="{% static 'core/images/card.png' %}">
+                  </td>
+                </tr>
+
+                <tr>
+                  <input class="card_input" type="text" name="alt" placeholder="Full Name" 
+                  style="font-size: 1rem;" required>
+                </tr>
+                <br>
+
+                <tr>
+                  <input class="card_input" type="text" name="alt" placeholder="Card Number" 
+                  style="font-size: 1rem;" required>
+                  <input class="card_input_cvv" type="password" name="alt" placeholder="CVV" 
+                  style="font-size: 1rem;" required>
+                </tr>
+                <br>
+
+                <tr>
+                  <td style="text-align: center;">
+                    <form action="{% url 'core:checkout' curr_user.id hotel.id %}" method="post" style="text-align: center;">
+                      {% csrf_token %}
+                      <input type="hidden" name="checkin-time" value="{{ checkin_time }}">
+                      <input type="hidden" name="checkout-time" value="{{ checkout_time }}">
+                      <input type="hidden" name="person-count" value="{{ person_count }}">
+                      <input type="hidden" name="room-type" value="{{ room_type }}">
+                      <input type="hidden" name="total-price" value="{{ total_price }}">
+                      <button type="submit" class="Place-button">Confirm Booking</button>
+                    </form>
                   </td>
                 </tr>
               </table>
