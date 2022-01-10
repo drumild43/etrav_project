@@ -88,8 +88,7 @@ class Booking(models.Model):
     total_price = models.PositiveIntegerField()
     checkin_time = models.DateTimeField()
     checkout_time = models.DateTimeField()
-    adult_count = models.PositiveIntegerField()
-    child_count = models.PositiveIntegerField()
+    person_count = models.PositiveIntegerField()
 
     STANDARD = 'std'
     SUITE = 'sui'

@@ -1,3 +1,5 @@
+from django import http
+from django.db.models import Avg
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -145,6 +147,68 @@ def cancel_booking(request, user_id, booking_id):
         booking.save()
         
         return HttpResponseRedirect(reverse('core:account', args=(user_id,)))
+
+def hotels(request, user_id=None):
+    if request.method == 'GET':
+        # filter by city
+        city = request.GET.get('city')
+
+        if city:
+            hotels = Hotel.objects.filter(city__name=city)
+        else:
+            hotels = Hotel.objects.all()
+
+        # filter by stars
+        one_star = request.GET.get('one-star-filter')
+        two_star = request.GET.get('two-star-filter')
+        three_star = request.GET.get('three-star-filter')
+        four_star = request.GET.get('four-star-filter')
+        five_star = request.GET.get('five-star-filter')
+
+        star_filters = [one_star, two_star, three_star, four_star, five_star]
+
+        stars = [i for i in [1,2,3,4,5] if star_filters[i-1]]
+        hotels = hotels.filter(stars__in=stars) if stars else hotels
+
+        # sort
+        sort_criterion = request.GET.get('sort')
+
+        if sort_criterion == "sort_price_HtoL":
+            hotels = hotels.order_by('-standard_room_price')
+            
+        if sort_criterion == "sort_price_LtoH":
+            hotels = hotels.order_by('standard_room_price')
+
+        if sort_criterion == "sort_rating_HtoL":
+            hotels = hotels.annotate(avg_rating=Avg('review__rating')).order_by('-avg_rating')
+
+        if sort_criterion == "sort_rating_LtoH":
+            hotels = hotels.annotate(avg_rating=Avg('review__rating')).order_by('avg_rating')
+
+        if sort_criterion == "sort_name_AtoZ":
+            hotels = hotels.order_by('name')
+
+        if sort_criterion == "sort_name_ZtoA":
+            hotels = hotels.order_by('-name')
+        
+        context = {
+            'hotels': hotels, 
+            'sort_criterion': sort_criterion,
+            'city': city,
+            'one-star-filter': one_star,
+            'two-star-filter': two_star,
+            'three-star-filter': three_star,
+            'four-star-filter': four_star,
+            'five-star-filter': five_star,
+            'checkin-date': request.GET.get('checkin-date'),
+            'checkout-date': request.GET.get('checkout-date'),
+            'person-count': request.GET.get('person-count')
+        }
+        if user_id:
+            curr_user = EtravUser.objects.get(pk=user_id)
+            context['curr_user'] = curr_user
+
+        return render(request, 'core/hotels.html', context=context)
 
 def hotel_details(request, hotel_id, user_id=None):
     if request.method == 'GET':

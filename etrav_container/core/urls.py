@@ -22,6 +22,8 @@ urlpatterns += [
 
 # hotel-related
 urlpatterns += [
+    path('hotels/', views.hotels, name='anon_hotels'),
+    path('<int:user_id>/hotels/', views.hotels, name='hotels'),
     path('hotels/<int:hotel_id>/', views.hotel_details, name='anon_hotel-details'),
     path('<int:user_id>/hotels/<int:hotel_id>/', views.hotel_details, name='hotel-details'),
     path('hotels/<int:hotel_id>/signup/', views.signup, name='hotel-signup-redirect'),
