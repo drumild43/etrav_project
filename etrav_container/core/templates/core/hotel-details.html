@@ -18,6 +18,36 @@
         
         <div class="desc">
           <h4>Hotel Details</h4>
+          <div class="booking_info">
+            <div class="booking_details">
+              {% if curr_user %}
+              <form id="add-form" class="form" action="{% url 'core:checkout' curr_user.id hotel.id %}" method="post">
+              {% csrf_token %}
+              {% else %}
+              <form id="add-form" class="form" action="{% url 'core:hotel-signin-redirect' hotel.id %}" method="get">
+              {% endif %}
+                <div class="item">
+                  <label for="checkin">Check-in date:</label>
+                  <input name="checkin-date" id="checkin" type="date" class="search_bar" 
+                  required {% if checkin-date %}value="{{ checkin-date }}" {% endif %}></i>
+                </div>
+    
+                <div class="item">
+                  <label for="checkout">Check-out date:</label>
+                  <input name="checkout-date" id="checkout" type="date" class="search_bar" 
+                  {required % if checkout-date %}value="{{ checkout-date }}" {% endif %}></i>
+                </div>
+    
+                <div class="item">
+                  <input type="number" name="person-count" placeholder="Number of People" 
+                  required {% if person-count %}value="{{ person-count }}" {% endif %} 
+                  class="search_bar"></i>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <p>Note: Each room can be occupied by a maximum of 2 people.</p>
           <table>
             <tr>
               <th></th>
@@ -43,11 +73,11 @@
                 &#10524 Standard size bed</br>
               </td>
               <td>
-                <p>Rs. {{ hotel.standard_room_price }}</p> per night
+                <p>Rs. {{ hotel.standard_room_price }}</p> per night per room
                 <br>
                 
                 <form class="form">
-                  <a href="#" class="addhotel">Book Now</a>
+                  <button type="submit" form="add-form">Book Now</button>
                 </form>
               </td>
             </tr>
@@ -67,10 +97,10 @@
                 &#10524 Complimentary Massage</br>
               </td>
               <td>
-                <p>Rs. {{ hotel.suite_price }}</p>
+                <p>Rs. {{ hotel.suite_price }}</p> per night per room
                 <br>
                 <form class="form">
-                  <a href="#" class="addhotel">Book Now</a>
+                  <button type="submit" form="add-form">Book Now</button>
                 </form>
               </td>
             </tr>

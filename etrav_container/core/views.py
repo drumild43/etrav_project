@@ -213,7 +213,13 @@ def hotels(request, user_id=None):
 def hotel_details(request, hotel_id, user_id=None):
     if request.method == 'GET':
         hotel = Hotel.objects.get(id = hotel_id)
-        context = {'hotel': hotel}
+
+        context = {
+            'hotel': hotel,
+            'checkin-date': request.GET.get('checkin-date'),
+            'checkout-date': request.GET.get('checkout-date'),
+            'person-count': request.GET.get('person-count')
+        }
 
         if user_id:
             curr_user = EtravUser.objects.get(pk=user_id)
